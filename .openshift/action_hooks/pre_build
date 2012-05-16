@@ -7,6 +7,15 @@
 # debug
 # set -x
 
+echo "Here we go"
+
+guile -v
+
+export OPENSHIFT_DATA_DIR="/dev/shm/os/data/"
+export OPENSHIFT_REPO_DIR="$PWD/"
+export OPENSHIFT_TMP_DIR="/dev/shm/os/tmp/"
+export OPENSHIFT_LOG_DIR="/dev/shm/os/log/"
+
 echo "$PWD"
 
 echo "$OPENSHIFT_DATA_DIR"
@@ -49,7 +58,6 @@ no
 4
 
 EOF
-
     # rm $RACKET_ARCH
 
     RACKET_FULL_PATH="${OPENSHIFT_DATA_DIR}${RACKET_PATH}"
