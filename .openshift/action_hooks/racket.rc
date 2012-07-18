@@ -1,6 +1,7 @@
 #! /bin/sh
 
 # Author: Ray Racine <ray.racine@gmail.com>
+# Wowa! Did not author.  Stolen from PLT distribution.
 # Do NOT "set -e"
 #set -x
 
