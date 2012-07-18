@@ -72,26 +72,29 @@ EOF
 	mv "${OPENSHIFT_TMP_DIR}racket" "${RACKET_HOME}"
     fi
 
-    if [[ ! -d $"RACKET_HOME" ]]; then
+    if [ ! -d "${RACKET_HOME}" ]; then
 	echo "Error installing Racket $VERSION to $RACKET_HOME"
 	exit 1
     fi
 
     echo "Attempting to run ${RACKET_HOME}/bin/racket to verify install." 
     # verify that the desired version installed successfully
-    if [[ ! `${RACKET_HOME}/bin/racket -v | tail -1` = "Welcome to Racket v{$VERSION}" ]]; then
-	echo "Error installing Racket $VERSION to $RACKET_HOME"
+
+    if [ ! `${RACKET_HOME}/bin/racket -v | tail -1` = "Welcome to Racket v${VERSION}." ]; then
+	echo "Error installing Racket $VERSION to $RACKET_HOME.  Cleaning up from install."
 	rm -rf $RACKET_HOME
 	exit 1
     fi
 
     #cleanup, remove other Racket versions
     pushd "${OPENSHIFT_DATA_DIR}"
+    echo "Cleaning up old versions of Racket"
+
     for old in [racket-]*; do
     # avoid showing "Removing version [racket-]*" message
 	if [[ -d $old ]]; then
 	    if [[ $old = "racket-$VERSION" ]]; then
-		echo "Skipping current version version $old"
+		echo "Skipping cleaning of current installed version $old"
 	    else
 		echo "Removing version $old"
 		rm -fr $old
