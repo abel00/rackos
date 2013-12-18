@@ -10,7 +10,7 @@
 echo "${OPENSHIFT_DATA_DIR}"
 echo "${OPENSHIFT_REPO_DIR}"
 echo "${OPENSHIFT_TMP_DIR}"
-echo "${OPENSHIFT_LOG_DIR}"
+echo "${OPENSHIFT_DIY_LOG_DIR}"
 
 #loads Racket VERSION, INIT_FILE, LOG_FILE, RACKET_COMMAND
 . ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/load_config
